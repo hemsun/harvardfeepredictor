@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arimo', sans-serif; /* You can adjust the font family as needed */
+      background-image: url("/static/pic.jpg");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .login {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    .login h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .login form {
+      margin-top: 20px; /* Adjust the spacing between the heading and the form */
+    }
+
+    .login form input[type="text"],
+    .login form button {
+      padding: 10px;
+      margin-bottom: 10px;
+      border: none;
+      border-radius: 5px;
+      width: 200px;
+      background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background for better visibility */
+      color: #333; /* Set button text color */
+    }
+
+    .login form button:hover {
+      background-color: #fff; /* Change background color on hover */
+      color: #000; /* Change text color on hover */
+      cursor: pointer; /* Add pointer cursor on hover */
+    }
+  </style>
+</head>
+<body>
+  <div class="login">
+    <h1>Harvard Fee Prediction</h1>
+    <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}" method="post">
+      <input type="text" name="Year" placeholder="Year" required="required" />
+      <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+    <br>
+    <br>
+    {{ prediction_text }}
+
+  </div>
+</body>
+</html>
